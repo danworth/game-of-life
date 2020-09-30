@@ -1,0 +1,15 @@
+{
+  "name": "gameoflife",
+  "version": "1.0.0",
+  "description": "",
+  "main": "game.js",
+  "dependencies": {},
+  "devDependencies": {
+    "jest": "^26.4.2"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "Dan Worth",
+  "license": "ISC"
+}
