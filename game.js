@@ -4,28 +4,32 @@ class Game {
     this.setLivingCells(livingCells);
   }
 
-  //js cannot override equality check for an object for Set.has()
-  //so convert to a String which gives the desired behaviour
   setLivingCells(cells) {
     this.livingCells = new Set();
     cells.forEach((cell) => {
       if (cell.x > this.size || cell.y > this.size) {
         throw new Error(`${JSON.stringify(cell)} is beyound the grid`);
       }
-      this.livingCells.add(`${cell.x}:${cell.y}`);
+      this.livingCells.add(this.convertCoordinateToString(cell.x, cell.y));
     });
   }
 
+  //js cannot override equality check for an object for Set.has()
+  //so convert to a String which gives the desired behaviour
+  convertCoordinateToString(x, y) {
+    return `${x}:${y}`
+  }
+
   updateGame() {
-    const livingCells = new Set();
+    const newLivingCells = new Set();
     for (let x = 0; x < this.size; x++) {
       for (let y = 0; y < this.size; y++) {
         if (this.cellWillBeAliveNextGo(x, y)) {
-          livingCells.add({ x, y });
+          newLivingCells.add(this.convertCoordinateToString(x, y));
         }
       }
     }
-    this.setLivingCells(livingCells);
+    this.livingCells = newLivingCells
   }
 
   cellWillBeAliveNextGo(x, y) {
@@ -106,7 +110,7 @@ class Game {
     }
   }
 
-  playGame(forHowManySeconds) {
+  playGame(forHowManyRounds) {
     this.printBoard();
     const theGame = this;
 
@@ -118,7 +122,7 @@ class Game {
 
     setTimeout(() => {
       clearInterval(timerId);
-    }, forHowManySeconds * 20000);
+    }, forHowManyRounds * 10000);
   }
 }
 
