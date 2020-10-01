@@ -52,8 +52,7 @@ class Game {
       return false;
     }
 
-    // can't really be reached so probably needs refactoring
-    // but I like that the logic is easy to follow
+    // its dead and it stays dead
     return false;
   }
 
