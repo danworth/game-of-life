@@ -81,21 +81,21 @@ class Game {
     let lives = 0;
 
     // top left
-    if (x > 0 && y > 0 && this.isCellAlive(x - 1, y - 1)) lives += 1;
+    if (this.isCellAlive(x - 1, y - 1)) lives += 1;
     // top middle
-    if (y > 0 && this.isCellAlive(x, y - 1)) lives += 1;
+    if (this.isCellAlive(x, y - 1)) lives += 1;
     // top right
-    if (x < this.size - 1 && y < this.size - 1 && this.isCellAlive(x + 1, y - 1)) lives += 1;
+    if (this.size - 1 && y < this.size - 1 && this.isCellAlive(x + 1, y - 1)) lives += 1;
     // middle left
-    if (x > 0 && this.isCellAlive(x - 1, y)) lives += 1;
+    if (this.isCellAlive(x - 1, y)) lives += 1;
     // middle right
-    if (x < this.size - 1 && this.isCellAlive(x + 1, y)) lives += 1;
+    if (this.size - 1 && this.isCellAlive(x + 1, y)) lives += 1;
     // bottom left
-    if (x > 0 && y < this.size - 1 && this.isCellAlive(x - 1, y + 1)) lives += 1;
+    if (this.size - 1 && this.isCellAlive(x - 1, y + 1)) lives += 1;
     // bottom middle
-    if (y < this.size - 1 && this.isCellAlive(x, y + 1)) lives += 1;
+    if (this.size - 1 && this.isCellAlive(x, y + 1)) lives += 1;
     // bottom right
-    if (x < this.size - 1 && y < this.size - 1 && this.isCellAlive(x + 1, y + 1)) lives += 1;
+    if (this.size - 1 && y < this.size - 1 && this.isCellAlive(x + 1, y + 1)) lives += 1;
 
     return lives;
   }
